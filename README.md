@@ -22,7 +22,7 @@ This application is a combination of what I have learned in a 3 months time span
 * Framer Motion
 
 
-## Roadmap and future updates
+## Roadmap and future updates | [Trello](https://trello.com/b/227clIys/codename-stones-and-caps)
 
 - [ ] Build backend
 - [ ] Implement User Authorization
