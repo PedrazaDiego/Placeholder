@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Post, Like
+from .models import NewUser, Post, Like
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -9,14 +9,10 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         read_only=True
     )
 
-    # post_id = serializers.PrimaryKeyRelatedField(
-    #     queryset=Post.objects.all(),
-    #     source='post'
-    # )
-
     class Meta:
-        model = User
-        fields = ('id', 'email', 'name', 'password', 'posts',)
+        model = NewUser
+        fields = ('id', 'password', 'last_login', 'is_superuser', 'email',
+                  'user_name', 'first_name', 'start_date', 'about', 'posts',)
 
 
 class PostSerializer(serializers.HyperlinkedModelSerializer):
@@ -30,7 +26,7 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
         read_only=True
     )
     user_id = serializers.PrimaryKeyRelatedField(
-        queryset=User.objects.all(),
+        queryset=NewUser.objects.all(),
         source='user'
     )
 
@@ -50,7 +46,7 @@ class LikeSerializer(serializers.HyperlinkedModelSerializer):
         read_only=True
     )
     user_id = serializers.PrimaryKeyRelatedField(
-        queryset=User.objects.all(),
+        queryset=NewUser.objects.all(),
         source='user'
     )
     post_id = serializers.PrimaryKeyRelatedField(
@@ -61,3 +57,19 @@ class LikeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Like
         fields = ('id', 'user_id', 'post_id', 'user', 'post',)
+
+
+class RegisterUserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = NewUser
+        fields = ('id', 'email', 'user_name', 'password',)
+        extra_kwarg = {'password': {'write_only': True}}
+
+    def create(self, validated_data):
+        password = validated_data.pop('password', None)
+        instance = self.Meta.model(**validated_data)
+        if password is not None:
+            instance.set_password(password)
+        instance.save()
+        return instance

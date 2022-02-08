@@ -39,9 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social',
-    'django_seed',
     'rest_framework',
     "corsheaders",
+    # 'users',
     
 ]
 
@@ -154,6 +154,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'social.NewUser'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
