@@ -9,7 +9,6 @@ This application is a combination of what I have learned in a 3 months time span
 
 ### Built with
 * PostgreSQL
-* Express
 * React
 * Node.js
 * Django
@@ -32,6 +31,7 @@ This application is a combination of what I have learned in a 3 months time span
     - [ ] Post CRUD functionality
 - [ ] Deploy 
 - [ ] Implement UX libraries to level up user experience
+- [ ] Hash passwords
 - [ ] Implement new Features
     - [ ] 20 minutes 20 feet 20 seconds rule 
     - [ ] Before bed reminder
