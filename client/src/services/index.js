@@ -19,3 +19,13 @@ export const GetToken = async (user) => {
         throw error
     }
 }
+
+export const RegisterUser = async (user) => {
+    console.log(user)
+    try {
+        const response = await axios.post('http://localhost:8000/api/register/', user)
+        console.log(response)
+    } catch (error) {
+        throw error
+    }
+}

@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { useHistory } from "react-router-dom";
 
 import { LoadToken } from './store/actions/UserAction';
+import { RegisterUser } from './services';
 
 import './App.css';
 
@@ -39,7 +40,11 @@ const App = (props) => {
 
   const handleRegister = (e) => {
     e.preventDefault()
-    
+    console.log('clicked')
+    history.push('/')
+    RegisterUser({
+      'email': e.target.email.value, 'password': e.target.password.value, 'user_name': e.target.username.value
+    })
   }
 
   return (
