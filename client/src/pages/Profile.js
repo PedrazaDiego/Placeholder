@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from "react-redux";
 import axios from 'axios'
 
@@ -26,6 +26,8 @@ const mapDispatchToProps = (dispatch) => {
 
 const Profile = (props) => {
 
+    const [render, setRender] = useState(0)
+
     const history = useHistory()
 
     const handleLogOut = () => {
@@ -39,15 +41,37 @@ const Profile = (props) => {
 
     return (
         <div>
-            <h3> Welcome {props.userState.user.username}</h3>
-            <button onClick={handleLogOut}>Log out</button>
-            {props.userState.user.about ? <p>About: {props.userState.user.about}</p> : null}
-            {props.userState.user.posts ? props.userState.user.posts.map( (e, e2) => (
-                <div key={e2} className='posts' >
-                    {e.content}
-                    <img src={e.image}/>
-                </div>
-            )) : null}
+            <h3> Welcome <span>{props.userState.user.first_name}</span> <span>{props.userState.user.username}</span></h3>
+            <div>
+                <button onClick={handleLogOut}>Log out</button>
+                <button onClick={()=> setRender(1)}>Edit Profile</button>
+            </div>
+
+            <div>
+                {render === 0 ?
+                    <div>
+                        {props.userState.user.about ? <p>About: {props.userState.user.about}</p> : null}
+                        {props.userState.user.posts ? props.userState.user.posts.map((e, e2) => (
+                            <div key={e2} className='posts' >
+                                {e.content}
+                                <img src={e.image} />
+                            </div>
+                        ))
+                        :
+                        null}
+                    </div>
+                    :
+                    <form>
+                        <label> First Name</label>
+                        <input type='text' placeholder={`${props.userState.user.first_name}`} name='first_name'></input>
+                        <label> Username</label>
+                        <input type='text' placeholder={`${props.userState.user.username}`} name='username'></input>
+                        <label> About </label>
+                        <textarea type='text' placeholder={`${props.userState.user.about}`} name='about'/>
+                        <button onClick={() => setRender(0)}>Confirm</button>
+                    </form>}
+            </div>
+
         </div>
     )
 }

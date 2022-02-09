@@ -2,7 +2,7 @@ import { GetToken, GetUser } from '../../services/index'
 import jwt_decode from "jwt-decode"
 import axios from 'axios'
 
-import { TOKEN_REQ, IS_LOGGED, USER_ID, IS_LOADING, GET_USER, LOG_OUT } from '../types'
+import { TOKEN_REQ, IS_LOGGED, USER_ID, IS_LOADING, GET_USER } from '../types'
 
 
 
@@ -10,7 +10,7 @@ export const LoadToken = (user) => {
     return async (dispatch) => {
         try {
             const token = await GetToken(user)
-            if (token.status === 200 && token.data.refresh){
+            if (token.status === 200 && token.data.refresh) {
                 localStorage.setItem('userToken', JSON.stringify(token.data))
                 const id = jwt_decode(localStorage.getItem('userToken'))
                 dispatch({
@@ -37,7 +37,7 @@ export const LoadUser = (id) => {
         try {
             const user = await GetUser(id)
             let posts = []
-            for(let i = 0; i < user.posts.length; i++){
+            for (let i = 0; i < user.posts.length; i++) {
                 let res = await axios.get(`${user.posts[i]}`)
                 posts.push(res.data)
             }

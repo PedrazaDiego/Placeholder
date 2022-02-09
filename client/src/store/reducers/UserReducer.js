@@ -13,7 +13,6 @@ const iState = {
 
 if (localStorage.getItem('userToken')) {
     const id = jwt_decode(localStorage.getItem('userToken'))
-    console.log(id.user_id)
     iState.user_id = id.user_id
     iState.userToken = JSON.parse(localStorage.getItem('userToken'))
     iState.isLoggedIn = true
