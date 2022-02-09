@@ -11,6 +11,7 @@ import NavBar from './components/NavBar'
 import Landing from './pages/Landing'
 import Profile from './pages/Profile'
 import SignIn from './components/SignIn';
+import Register from './components/Register';
 
 
 const mapStateToProps = (state) => {
@@ -33,7 +34,12 @@ const App = (props) => {
   const handleLogIn = (e) => {
     e.preventDefault()
     history.push('/')
-    props.fetchToken({ 'email': e.target.username.value, 'password': e.target.password.value })
+    props.fetchToken({ 'email': e.target.email.value, 'password': e.target.password.value })
+  }
+
+  const handleRegister = (e) => {
+    e.preventDefault()
+    
   }
 
   return (
@@ -56,6 +62,9 @@ const App = (props) => {
         <Switch>
           <Route exact path='/'>
             <SignIn handleLogIn={handleLogIn} />
+          </Route>
+          <Route path='/sign-up'>
+            <Register handleRegister={handleRegister}/>
           </Route>
         </Switch>
       </div>
