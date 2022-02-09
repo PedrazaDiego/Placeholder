@@ -1,0 +1,11 @@
+.nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.posts {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1rem 2rem 1rem;
+}

@@ -59,6 +59,7 @@ class LikeSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'user_id', 'post_id', 'user', 'post',)
 
 
+# This block of code was taken from https://www.youtube.com/watch?v=AfYfvjP1hK8&ab_channel=VeryAcademy
 class RegisterUserSerializer(serializers.ModelSerializer):
 
     class Meta:

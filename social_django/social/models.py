@@ -3,7 +3,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
-
+# This block of code was taken from https://www.youtube.com/watch?v=AfYfvjP1hK8&ab_channel=VeryAcademy
 class CustomAccountManager(BaseUserManager):
 
     def create_superuser(self, email, user_name, first_name, password, **other_fields):
@@ -25,15 +25,15 @@ class CustomAccountManager(BaseUserManager):
         user.save()
         return user
 
-
+# This block of code was taken from https://www.youtube.com/watch?v=AfYfvjP1hK8&ab_channel=VeryAcademy
 class NewUser(AbstractBaseUser, PermissionsMixin):
 
     email = models.EmailField(_('email address'), unique=True)
     user_name = models.CharField(max_length=150, unique=True)
-    first_name = models.CharField(max_length=150, unique=True)
+    first_name = models.CharField(max_length=150, unique=False)
     start_date = models.DateTimeField(default=timezone.now)
     about = models.TextField(_('about'), max_length=500, blank=True)
-    is_staff = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
 
     objects = CustomAccountManager()
