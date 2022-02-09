@@ -1,15 +1,17 @@
 import jwt_decode from "jwt-decode"
-const { TOKEN_REQ, IS_LOGGED, USER_ID } = require('../types')
+const { TOKEN_REQ, IS_LOGGED, USER_ID, IS_LOADING, GET_USER } = require('../types')
 
 
 
 const iState = {
+    isLoading: true,
     isLoggedIn: false,
     userToken: {},
-    user_id: null
+    user_id: null,
+    user: []
 }
 
-if(localStorage.getItem('userToken')){
+if (localStorage.getItem('userToken')) {
     const id = jwt_decode(localStorage.getItem('userToken'))
     console.log(id.user_id)
     iState.user_id = id.user_id
@@ -19,16 +21,20 @@ if(localStorage.getItem('userToken')){
 
 
 const UserReducer = (state = iState, action) => {
-    
+
     switch (action.type) {
+        case IS_LOADING:
+            return { ...state, isLoading: action.payload }
+        case GET_USER:
+            return  {...state, user: action.payload }
         case USER_ID:
-            return { ...state, user_id: action.payload.user_id}
+            return { ...state, user_id: action.payload.user_id }
         case TOKEN_REQ:
-            return { ...state, userToken: action.payload}
+            return { ...state, userToken: action.payload }
         case IS_LOGGED:
-            return { ...state, isLoggedIn: action.payload}
+            return { ...state, isLoggedIn: action.payload }
         default:
-            return { ...state}
+            return { ...state }
     }
 }
 

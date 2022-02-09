@@ -1,5 +1,5 @@
-import { GetToken } from '../../services/index'
-import { TOKEN_REQ, IS_LOGGED, USER_ID } from '../types'
+import { GetToken, GetUser } from '../../services/index'
+import { TOKEN_REQ, IS_LOGGED, USER_ID, IS_LOADING, GET_USER } from '../types'
 import jwt_decode from "jwt-decode"
 
 export const LoadToken = (user) => {
@@ -23,6 +23,31 @@ export const LoadToken = (user) => {
                     payload: id
                 })
             }
+        } catch (error) {
+            throw error
+        }
+    }
+}
+
+export const LoadUser = (id) => {
+    return async (dispatch) => {
+        try {
+            const user = await GetUser(id)
+            let filteredUser = {
+                email: user.email,
+                username: user.user_name,
+                first_name: user.first_name,
+                about: user.about,
+                start_date: user.start_date
+            }
+            dispatch({
+                type: IS_LOADING,
+                payload: false
+            })
+            dispatch({
+                type: GET_USER,
+                payload: filteredUser
+            })
         } catch (error) {
             throw error
         }

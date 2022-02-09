@@ -10,6 +10,15 @@ export const GetPosts = async () => {
     }
 }
 
+export const GetUser = async (id) => {
+    try {
+        const response = await axios.get(`http://localhost:8000/users/${id}`)
+        return response.data
+    } catch (error) {
+        throw error
+    }
+}
+
 export const GetToken = async (user) => {
     try {
         const response = await axios.post('http://localhost:8000/api/token/', user)
@@ -23,8 +32,7 @@ export const GetToken = async (user) => {
 export const RegisterUser = async (user) => {
     console.log(user)
     try {
-        const response = await axios.post('http://localhost:8000/api/register/', user)
-        console.log(response)
+        await axios.post('http://localhost:8000/api/register/', user)
     } catch (error) {
         throw error
     }
