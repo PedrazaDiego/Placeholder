@@ -1,5 +1,5 @@
 import jwt_decode from "jwt-decode"
-const { TOKEN_REQ, IS_LOGGED, USER_ID, IS_LOADING, GET_USER } = require('../types')
+const { TOKEN_REQ, IS_LOGGED, USER_ID, IS_LOADING, GET_USER, LOG_OUT } = require('../types')
 
 
 
@@ -28,11 +28,14 @@ const UserReducer = (state = iState, action) => {
         case GET_USER:
             return  {...state, user: action.payload }
         case USER_ID:
-            return { ...state, user_id: action.payload.user_id }
+            return { ...state, user_id: action.payload}
         case TOKEN_REQ:
             return { ...state, userToken: action.payload }
         case IS_LOGGED:
             return { ...state, isLoggedIn: action.payload }
+        case LOG_OUT:
+            console.log('user reducer logout')
+            return { iState }
         default:
             return { ...state }
     }

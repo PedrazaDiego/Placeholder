@@ -2,7 +2,8 @@ import { GetToken, GetUser } from '../../services/index'
 import jwt_decode from "jwt-decode"
 import axios from 'axios'
 
-import { TOKEN_REQ, IS_LOGGED, USER_ID, IS_LOADING, GET_USER } from '../types'
+import { TOKEN_REQ, IS_LOGGED, USER_ID, IS_LOADING, GET_USER, LOG_OUT } from '../types'
+
 
 
 export const LoadToken = (user) => {
@@ -22,7 +23,7 @@ export const LoadToken = (user) => {
                 })
                 dispatch({
                     type: USER_ID,
-                    payload: id
+                    payload: id.user_id
                 })
             }
         } catch (error) {
@@ -61,4 +62,32 @@ export const LoadUser = (id) => {
             throw error
         }
     }
+}
+
+export const LogOut = () => {
+    return (dispatch) => {
+        localStorage.removeItem('userToken')
+        dispatch({
+            type: USER_ID,
+            payload: null
+        })
+        dispatch({
+            type: GET_USER,
+            payload: false
+        })
+        dispatch({
+            type: IS_LOADING,
+            payload: true
+        })
+        dispatch({
+            type: IS_LOGGED,
+            payload: false
+        })
+        dispatch({
+            type: TOKEN_REQ,
+            payload: {}
+        })
+
+    }
+
 }
