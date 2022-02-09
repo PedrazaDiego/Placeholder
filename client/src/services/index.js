@@ -1,10 +1,13 @@
 import axios from 'axios'
 
-export const GetPosts = async () => {
+export const GetPosts = async (id) => {
     try {
-        const response = await axios.get('http://localhost:8000/posts/')
-        // console.log(response.data)
-        return response.data
+        if(id){
+            return
+        } else {
+            const response = await axios.get('http://localhost:8000/posts/')
+            return response.data
+        }
     } catch (error) {
         throw error
     }

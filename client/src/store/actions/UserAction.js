@@ -1,12 +1,14 @@
 import { GetToken, GetUser } from '../../services/index'
-import { TOKEN_REQ, IS_LOGGED, USER_ID, IS_LOADING, GET_USER } from '../types'
 import jwt_decode from "jwt-decode"
+import axios from 'axios'
+
+import { TOKEN_REQ, IS_LOGGED, USER_ID, IS_LOADING, GET_USER } from '../types'
+
 
 export const LoadToken = (user) => {
     return async (dispatch) => {
         try {
             const token = await GetToken(user)
-            // console.log(token)
             if (token.status === 200 && token.data.refresh){
                 localStorage.setItem('userToken', JSON.stringify(token.data))
                 const id = jwt_decode(localStorage.getItem('userToken'))
@@ -33,21 +35,28 @@ export const LoadUser = (id) => {
     return async (dispatch) => {
         try {
             const user = await GetUser(id)
+            let posts = []
+            for(let i = 0; i < user.posts.length; i++){
+                let res = await axios.get(`${user.posts[i]}`)
+                posts.push(res.data)
+            }
             let filteredUser = {
                 email: user.email,
                 username: user.user_name,
                 first_name: user.first_name,
                 about: user.about,
-                start_date: user.start_date
+                start_date: user.start_date,
+                posts: posts
             }
-            dispatch({
-                type: IS_LOADING,
-                payload: false
-            })
             dispatch({
                 type: GET_USER,
                 payload: filteredUser
             })
+            dispatch({
+                type: IS_LOADING,
+                payload: false
+            })
+
         } catch (error) {
             throw error
         }

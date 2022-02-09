@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from "react-redux";
-
+import axios from 'axios'
 
 import SignIn from '../components/SignIn';
 import { LoadUser } from '../store/actions/UserAction';
@@ -14,21 +14,16 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return  {
+    return {
         fetchUser: (id) => dispatch(LoadUser(id))
     }
 }
 
 
 
+
 const Profile = (props) => {
 
-    // let user = {}
-
-    // const getUserResponse = async () => {
-    //     user = await GetUser(props.userState.user_id)
-    //     console.log(user.user_name)
-    // }
 
     useEffect(() => {
         props.fetchUser(props.userState.user_id)
@@ -36,12 +31,16 @@ const Profile = (props) => {
 
     return (
         <div>
-            <div>
-
-            </div>
-  
+            <h3> Welcome {props.userState.user.username}</h3>
+            {props.userState.user.about ? <p>About: {props.userState.user.about}</p> : null}
+            {props.userState.user.posts ? props.userState.user.posts.map( (e, e2) => (
+                <div key={e2} className='posts' >
+                    {e.content}
+                    <img src={e.image}/>
+                </div>
+            )) : null}
         </div>
     )
-}   
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)

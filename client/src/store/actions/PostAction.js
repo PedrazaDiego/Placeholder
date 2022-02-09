@@ -8,7 +8,7 @@ export const LoadPosts = () => {
             // console.log(posts)
             dispatch({
                 type: GET_POST,
-                payload: posts
+                payload: posts.reverse()
             })
             dispatch({
                 type: IS_LOADING,

@@ -52,7 +52,7 @@ const App = (props) => {
       {props.userState.isLoggedIn === true ? 
       <div>
         <div>
-          <NavBar />
+          <NavBar userState={props.userState}/>
         </div>
         <div>
           <Switch>
