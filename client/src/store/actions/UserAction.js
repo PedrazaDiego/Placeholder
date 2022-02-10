@@ -36,6 +36,7 @@ export const LoadUser = (id) => {
     return async (dispatch) => {
         try {
             const user = await GetUser(id)
+            console.log(user)
             let posts = []
             for (let i = 0; i < user.posts.length; i++) {
                 let res = await axios.get(`${user.posts[i]}`)

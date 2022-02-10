@@ -15,8 +15,16 @@ export const GetPosts = async (id) => {
 
 export const PostPost = async (post) => {
     try {
-        const response = await axios.post(`http://localhost:8000/posts/`, post)
-        console.log(response)
+        await axios.post(`http://localhost:8000/posts/`, post)
+
+    } catch (error) {
+        throw error
+    }
+}
+
+export const DeletePost = async (id) => {
+    try {
+        await axios.delete(`http://localhost:8000/posts/${id}`)
     } catch (error) {
         throw error
     }

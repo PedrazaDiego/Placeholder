@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from "react-redux";
 
 import { LoadUser, LogOut } from '../store/actions/UserAction';
-import { UpdateUser, DeleteUser, PostPost } from '../services';
+import { UpdateUser, DeleteUser, PostPost, DeletePost } from '../services';
 import { useHistory } from 'react-router-dom';
 import User from '../components/User';
 import Post from '../components/Post';
@@ -69,6 +69,12 @@ const Profile = (props) => {
         })
     }
 
+    const deletePost = (id) => {
+        DeletePost(id)
+        window.location.reload()
+        // history.push('/profile')
+    }
+
     useEffect(() => {
         props.fetchUser(props.userState.user_id)
         props.updateCurrent(1)
@@ -89,7 +95,7 @@ const Profile = (props) => {
                         {props.userState.user.about ? <p>About: {props.userState.user.about}</p> : null}
                         {props.userState.user.posts ? props.userState.user.posts.map((e, e2) => (
                             <div key={e2} className='posts' >
-                                <Post e={e} userState={props.userState} postState={props.postState}/>
+                                <Post e={e} userState={props.userState} postState={props.postState} deletePost={deletePost}/>
                             </div>
                         ))
                         :
