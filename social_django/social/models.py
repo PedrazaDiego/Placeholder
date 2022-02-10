@@ -42,7 +42,7 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['user_name', 'first_name']
 
     def __str__(self):
-        return self.user_name
+        return str(self.user_name)
 
 
 class Post(models.Model):
@@ -52,7 +52,7 @@ class Post(models.Model):
     image = models.TextField()
 
     def __str__(self):
-        return self.user
+        return str(self.user)
 
 
 class Like(models.Model):
@@ -62,4 +62,4 @@ class Like(models.Model):
         NewUser, on_delete=models.CASCADE, related_name='likes')
 
     def __str__(self):
-        return self.post
+        return 'like'

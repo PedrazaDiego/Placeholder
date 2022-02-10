@@ -38,7 +38,6 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
 class LikeSerializer(serializers.HyperlinkedModelSerializer):
     post = serializers.HyperlinkedRelatedField(
         view_name='post_detail',
-        many=True,
         read_only=True
     )
     user = serializers.HyperlinkedRelatedField(

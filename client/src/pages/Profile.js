@@ -72,7 +72,6 @@ const Profile = (props) => {
     const deletePost = (id) => {
         DeletePost(id)
         window.location.reload()
-        // history.push('/profile')
     }
 
     useEffect(() => {

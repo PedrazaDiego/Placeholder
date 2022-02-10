@@ -11,11 +11,17 @@ export default function Post(props) {
       <img src={props.e.image} />
       {props.postState.current === 1 ?
         <div>
-          <div>
-            {props.userState.user.username} <button>heart</button> {props.e.likes.length} likes
-          </div>
+          <button>heart</button> {props.e.likes.length} likes
         </div>
         : null}
+
+
+      {props.postState.current === 0 ?
+        <div>
+          <button>heart</button> {props.e.likes.length} likes
+        </div>
+        :
+        null}
     </div>
   )
 }
