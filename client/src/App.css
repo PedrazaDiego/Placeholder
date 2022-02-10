@@ -9,3 +9,38 @@
     flex-direction: column;
     padding: 2rem 1rem 2rem 1rem;
 }
+
+input {
+    width: 75%;
+    text-decoration: none;
+    border-radius: 3px;
+    background-color: #e7e7e7;
+    border: 1px solid #ccc;
+    padding: 5px 8px;
+    margin: 1px;
+}
+
+
+textarea {
+    max-width: 75%;
+    width: 75%;
+    height: 75px;
+    text-decoration: none;
+    border-radius: 3px;
+    background-color: #e7e7e7;
+    border: 1px solid #ccc;
+    padding: 5px 8px;
+    margin: 2px;
+}
+
+.button {
+    margin: 10px;
+    padding: 2px 5px;
+    text-decoration: none;
+    border: none;
+    background-color: #e7e7e7;
+    border-radius: 3px;
+}
+.button:hover {
+    background-color: #CECECE;
+}

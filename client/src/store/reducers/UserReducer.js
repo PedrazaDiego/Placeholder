@@ -33,7 +33,6 @@ const UserReducer = (state = iState, action) => {
         case IS_LOGGED:
             return { ...state, isLoggedIn: action.payload }
         case LOG_OUT:
-            console.log('user reducer logout')
             return { iState }
         default:
             return { ...state }

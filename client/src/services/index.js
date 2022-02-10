@@ -25,7 +25,6 @@ export const GetUser = async (id) => {
 export const GetToken = async (user) => {
     try {
         const response = await axios.post('http://localhost:8000/api/token/', user)
-        console.log(response)
         return response
     } catch (error) {
         throw error
@@ -33,9 +32,24 @@ export const GetToken = async (user) => {
 }
 
 export const RegisterUser = async (user) => {
-    console.log(user)
     try {
         await axios.post('http://localhost:8000/api/register/', user)
+    } catch (error) {
+        throw error
+    }
+}
+
+export const UpdateUser = async (user, id) => {
+    try {
+        await axios.put(`http://localhost:8000/users/${id}`, user)
+    } catch (error) {
+        throw error
+    }
+}
+
+export const DeleteUser = async (id) => {
+    try {
+        await axios.delete(`http://localhost:8000/users/${id}`)
     } catch (error) {
         throw error
     }

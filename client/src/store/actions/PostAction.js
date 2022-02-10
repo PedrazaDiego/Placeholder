@@ -5,7 +5,6 @@ export const LoadPosts = () => {
     return async (dispatch) => {
         try {
             const posts = await GetPosts()
-            // console.log(posts)
             dispatch({
                 type: GET_POST,
                 payload: posts.reverse()
