@@ -1,5 +1,5 @@
 import { GetPosts} from '../../services/index'
-import {GET_POST, IS_LOADING} from '../types'
+import {GET_POST, IS_LOADING, CURRENT} from '../types'
 
 export const LoadPosts = () => {
     return async (dispatch) => {
@@ -16,5 +16,14 @@ export const LoadPosts = () => {
         } catch (error) {
             throw error
         }
+    }
+}
+
+export const UpdateCurrent = (n) => {
+    return (dispatch) => {
+        dispatch({
+            type: CURRENT,
+            payload: n
+        })
     }
 }

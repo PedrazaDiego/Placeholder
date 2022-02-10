@@ -5,18 +5,22 @@ import { LoadUser, LogOut } from '../store/actions/UserAction';
 import { UpdateUser, DeleteUser } from '../services';
 import { useHistory } from 'react-router-dom';
 import User from '../components/User';
+import Post from '../components/Post';
+import { UpdateCurrent } from '../store/actions/PostAction';
 
 
 const mapStateToProps = (state) => {
     return {
-        userState: state.userState
+        userState: state.userState,
+        postState: state.postState
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchUser: (id) => dispatch(LoadUser(id)),
-        logOut: () => dispatch(LogOut())
+        logOut: () => dispatch(LogOut()),
+        updateCurrent: (n) => dispatch(UpdateCurrent(n))
     }
 }
 
@@ -60,6 +64,7 @@ const Profile = (props) => {
 
     useEffect(() => {
         props.fetchUser(props.userState.user_id)
+        props.updateCurrent(1)
     }, [])
 
     return (
@@ -76,8 +81,7 @@ const Profile = (props) => {
                         {props.userState.user.about ? <p>About: {props.userState.user.about}</p> : null}
                         {props.userState.user.posts ? props.userState.user.posts.map((e, e2) => (
                             <div key={e2} className='posts' >
-                                {e.content}
-                                <img src={e.image} />
+                                <Post e={e} userState={props.userState} postState={props.postState}/>
                             </div>
                         ))
                         :

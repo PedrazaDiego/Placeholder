@@ -47,7 +47,7 @@ export const LoadUser = (id) => {
                 first_name: user.first_name,
                 about: user.about,
                 start_date: user.start_date,
-                posts: posts
+                posts: posts.reverse()
             }
             dispatch({
                 type: GET_USER,
