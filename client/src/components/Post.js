@@ -1,6 +1,9 @@
 import React from 'react'
 
+
+
 export default function Post(props) {
+
   return (
     <div className='posts post-card'>
         <img src={props.e.image}/>
@@ -8,6 +11,12 @@ export default function Post(props) {
         <div>
           {props.userState.user.username} <button>heart</button> {props.e.likes.length} likes
         </div> 
+        : null}
+
+        {props.postState.current === 0 ?
+        <div>
+
+        </div>
         : null}
     </div>
   )

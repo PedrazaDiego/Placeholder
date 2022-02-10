@@ -6,6 +6,7 @@ import { UpdateUser, DeleteUser } from '../services';
 import { useHistory } from 'react-router-dom';
 import User from '../components/User';
 import Post from '../components/Post';
+import NewPost from '../components/NewPost';
 import { UpdateCurrent } from '../store/actions/PostAction';
 
 
@@ -62,6 +63,11 @@ const Profile = (props) => {
         render === 1 ?  setRender(2) : setRender(1)
     }
 
+    const handlePost = (e) => {
+        e.preventDefault()
+        
+    }
+
     useEffect(() => {
         props.fetchUser(props.userState.user_id)
         props.updateCurrent(1)
@@ -73,6 +79,7 @@ const Profile = (props) => {
             <div>
                 <button onClick={handleLogOut}>Log out</button>
                 <button onClick={()=> setRender(1)}>Edit Profile</button>
+                <button onClick={() => setRender(3)}>Post</button>
             </div>
 
             <div>
@@ -105,7 +112,14 @@ const Profile = (props) => {
                 </div>
                 : null}
             </div>
-
+            
+            <div>
+                {render === 3 ?
+                <div>
+                    <NewPost handleCancel={handleCancel} />
+                </div>
+                : null}
+            </div>
         </div>
     )
 }
