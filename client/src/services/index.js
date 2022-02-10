@@ -13,6 +13,15 @@ export const GetPosts = async (id) => {
     }
 }
 
+export const PostPost = async (post) => {
+    try {
+        const response = await axios.post(`http://localhost:8000/posts/`, post)
+        console.log(response)
+    } catch (error) {
+        throw error
+    }
+}
+
 export const GetUser = async (id) => {
     try {
         const response = await axios.get(`http://localhost:8000/users/${id}`)

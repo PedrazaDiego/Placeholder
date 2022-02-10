@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from "react-redux";
 
 import { LoadUser, LogOut } from '../store/actions/UserAction';
-import { UpdateUser, DeleteUser } from '../services';
+import { UpdateUser, DeleteUser, PostPost } from '../services';
 import { useHistory } from 'react-router-dom';
 import User from '../components/User';
 import Post from '../components/Post';
@@ -64,8 +64,9 @@ const Profile = (props) => {
     }
 
     const handlePost = (e) => {
-        e.preventDefault()
-        
+        PostPost({ 
+            'user_id': props.userState.user_id, 'content': e.target.content.value, 'image': e.target.image.value 
+        })
     }
 
     useEffect(() => {
@@ -116,7 +117,7 @@ const Profile = (props) => {
             <div>
                 {render === 3 ?
                 <div>
-                    <NewPost handleCancel={handleCancel} />
+                    <NewPost handleCancel={handleCancel} handlePost={handlePost}/>
                 </div>
                 : null}
             </div>
