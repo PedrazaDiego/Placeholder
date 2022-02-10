@@ -33,6 +33,10 @@ textarea {
     margin: 2px;
 }
 
+img{
+    border-radius: 5px;
+}
+
 .button {
     margin: 10px;
     padding: 2px 5px;
@@ -43,4 +47,10 @@ textarea {
 }
 .button:hover {
     background-color: #CECECE;
+}
+
+.post-card{
+    border: solid 1px black;
+    border-radius: 5px;
+    background-color: gray;
 }

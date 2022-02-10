@@ -28,8 +28,8 @@ const Landing = (props) => {
         <div>
             {props.postState.isLoading ? null : <div> {props.postState.posts.map( (e) => (
                 <div key={e.id} className='posts'>
-                    {/* <Post/> */}
-                    <img src={e.image}/>
+                    <Post e={e} />
+                    {/* <img src={e.image}/> */}
                 </div>
             ))} </div>}
         </div>
