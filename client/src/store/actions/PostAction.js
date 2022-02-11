@@ -1,5 +1,5 @@
-import { GetPosts} from '../../services/index'
-import {GET_POST, IS_LOADING, CURRENT} from '../types'
+import { GetPosts, VerifyLike} from '../../services/index'
+import {GET_POST, IS_LOADING, CURRENT, UPDATE} from '../types'
 
 export const LoadPosts = () => {
     return async (dispatch) => {
@@ -12,6 +12,20 @@ export const LoadPosts = () => {
             dispatch({
                 type: IS_LOADING,
                 payload: false,
+            })
+        } catch (error) {
+            throw error
+        }
+    }
+}
+
+export const ToggleState = (postId, userId, toState) => {
+    return async (dispatch) => {
+        try {
+            await VerifyLike(postId, userId)
+            dispatch({
+                type: UPDATE,
+                payload: toState
             })
         } catch (error) {
             throw error

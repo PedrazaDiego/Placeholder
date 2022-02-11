@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import {connect} from 'react-redux'
 
-import { LoadPosts, UpdateCurrent } from "../store/actions/PostAction";
+import { LoadPosts, ToggleState, UpdateCurrent } from "../store/actions/PostAction";
 import { VerifyLike } from "../services";
 import Post from '../components/Post'
 
@@ -9,7 +9,8 @@ import Post from '../components/Post'
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchPosts: () => dispatch(LoadPosts()),
-        updateCurrent: (n) => dispatch(UpdateCurrent(n))
+        updateCurrent: (n) => dispatch(UpdateCurrent(n)),
+        toggleState: (postId, userId, toState) => dispatch(ToggleState(postId, userId, toState))
     }
 }
 
@@ -24,7 +25,14 @@ const mapStateToProps = (state) => {
 const Landing = (props) => {
 
     const handleLike = (postId, userId) => {
-        VerifyLike(postId, userId)
+        let toState
+        if(!props.postState.toggledState){
+            toState = true
+        }
+        if(props.postState.toggledState){
+            toState = false
+        }
+        props.toggleState(postId, userId, toState)
     }
 
     useEffect(() => {
