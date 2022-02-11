@@ -50,6 +50,7 @@ class Post(models.Model):
         NewUser, on_delete=models.CASCADE, related_name='posts')
     content = models.CharField(max_length=256)
     image = models.TextField()
+    
 
     def __str__(self):
         return str(self.user)

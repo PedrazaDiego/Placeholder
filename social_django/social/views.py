@@ -6,6 +6,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny
 
+from django.core.paginator import Paginator
+from django.views.generic import ListView
 from .serializers import RegisterUserSerializer
 from .serializers import UserSerializer, PostSerializer, LikeSerializer
 from .models import NewUser, Post, Like
@@ -22,10 +24,10 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class PostList(generics.ListCreateAPIView):
-    queryset = Post.objects.all()
+    queryset = list(reversed(Post.objects.all()))
     serializer_class = PostSerializer
 
-
+        
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer

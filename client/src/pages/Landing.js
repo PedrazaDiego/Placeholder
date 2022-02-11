@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import {connect} from 'react-redux'
 
 import { LoadPosts, ToggleState, UpdateCurrent } from "../store/actions/PostAction";
-import { VerifyLike } from "../services";
 import Post from '../components/Post'
 
 
@@ -45,7 +44,6 @@ const Landing = (props) => {
             {props.postState.isLoading ? null : <div> {props.postState.posts.map( (e) => (
                 <div key={e.id} className='posts'>
                     <Post e={e} userState={props.userState} postState={props.postState} handleLike={handleLike}/>
-                    {/* <img src={e.image}/> */}
                 </div>
             ))} </div>}
         </div>
