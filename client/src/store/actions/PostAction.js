@@ -1,10 +1,10 @@
 import { GetPosts, VerifyLike} from '../../services/index'
 import {GET_POST, IS_LOADING, CURRENT, UPDATE} from '../types'
 
-export const LoadPosts = () => {
+export const LoadPosts = (n) => {
     return async (dispatch) => {
         try {
-            const posts = await GetPosts()
+            const posts = await GetPosts(n)
             console.log(posts)
             dispatch({
                 type: GET_POST,

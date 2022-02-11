@@ -14,7 +14,7 @@ const PostReducer = (state = iState, action) => {
         case CURRENT:
             return { ...state, current: action.payload}
         case GET_POST:
-            return { ...state, posts: action.payload}
+            return { ...state, posts: [...state.posts, ...action.payload]}
         case UPDATE:
             return { ...state, toggledState: action.payload}
         default:
