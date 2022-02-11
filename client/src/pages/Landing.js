@@ -10,7 +10,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchPosts: (n) => dispatch(LoadPosts(n)),
         updateCurrent: (n) => dispatch(UpdateCurrent(n)),
-        toggleState: (postId, userId, toState) => dispatch(ToggleState(postId, userId, toState))
+        toggleState: (postId, userId) => dispatch(ToggleState(postId, userId))
     }
 }
 
@@ -25,22 +25,19 @@ const mapStateToProps = (state) => {
 const Landing = (props) => {
 
     const [page, setPage] = useState(2)
+    const [hasMore, setHasMore] = useState(true)
 
     const handleLike = (postId, userId) => {
-        let toState
-        if (!props.postState.toggledState) {
-            toState = true
-        }
-        if (props.postState.toggledState) {
-            toState = false
-        }
-        props.toggleState(postId, userId, toState)
+        props.toggleState(postId, userId)
     }
 
     const fetchData = () => {
         console.log(`loading new page ${page}`)
         props.fetchPosts(page)
         setPage(page + 1)
+        if(props.postState.posts.length > props.postState.count - 9){
+            setHasMore(false)
+        }
     }
 
     useEffect(() => {
@@ -60,7 +57,7 @@ const Landing = (props) => {
     <InfiniteScroll
         dataLength={props.postState.posts.length} //This is important field to render the next data
         next={fetchData}
-        hasMore={true}
+        hasMore={hasMore}
         loader={<h4>Loading...</h4>}
         endMessage={
             <p style={{ textAlign: 'center' }}>
@@ -68,7 +65,7 @@ const Landing = (props) => {
             </p> 
         }
         // below props only if you need pull down functionality
-        refreshFunction={() => console.log('refreshed')}
+        refreshFunction={() => window.location.reload()}
         pullDownToRefresh
         pullDownToRefreshThreshold={50}
         pullDownToRefreshContent={
