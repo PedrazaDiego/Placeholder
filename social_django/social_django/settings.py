@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+import os
+import dj_database_url
 
 from pathlib import Path
 
@@ -21,12 +23,12 @@ from datetime import timedelta
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-t82w#!vn)vjeslhiars%9t)iw!k&fpn&e(!rusk63_bqwy+b0^'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True if os.environ['MODE'] == 'dev' else False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,9 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'social',
     'rest_framework',
-    "corsheaders",
-    # 'users',
-    
+    "corsheaders",  
 ]
 
 REST_FRAMEWORK = {
@@ -91,10 +91,14 @@ SIMPLE_JWT = {
 }
 
 MIDDLEWARE = [
+
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
 
     'django.middleware.security.SecurityMiddleware',
+
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -127,16 +131,19 @@ WSGI_APPLICATION = 'social_django.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'social',
-        'USER': 'socialuser',
-        'PASSWORD': 'social',
-        'HOST': 'localhost'
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'social',
+#         'USER': 'socialuser',
+#         'PASSWORD': 'social',
+#         'HOST': 'localhost'
+#     }
+# }
 
+DATABASES = {
+  'default': dj_database_url.config(conn_max_age=600)
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -180,7 +187,11 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8080",
-    "http://localhost:3000",
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:8080",
+#     "http://localhost:3000",
+# ]
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+STATIC_ROOT=os.path.join(BASE_DIR, "static/")
