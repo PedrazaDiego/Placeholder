@@ -3,6 +3,10 @@ import React from 'react'
 
 export default function Post(props) {
 
+
+
+
+
   return (
     <div className='posts post-card'>
       <div>
@@ -18,7 +22,7 @@ export default function Post(props) {
 
       {props.postState.current === 0 ?
         <div>
-          <button>heart</button> {props.e.likes.length} likes
+          <button onClick={() => props.handleLike(props.e.id, props.userState.user_id)}>heart</button> {props.e.likes.length} likes
         </div>
         :
         null}
