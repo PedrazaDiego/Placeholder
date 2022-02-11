@@ -75,17 +75,18 @@ export const DeleteUser = async (id) => {
 export const VerifyLike = async (postId, userId) => {
     try {
         const response = await axios.get(`http://localhost:8000/posts/${postId}`)
-        console.log(response.data)
         let resArray = []
+        let obj = {}
         for(let i = 0; i < response.data.likes.length; i++){
             let resLikes = await axios.get(`${response.data.likes[i]}`)
             resArray.push(resLikes.data.user_id)
-            console.log(resLikes.data)
+            obj = resLikes.data
         }
         if(resArray.includes(userId)){
-            console.log('included')
+            if(obj.user_id === userId){
+                await axios.delete(`http://localhost:8000/likes/${obj.id}`)
+            }
         } else if (!resArray.includes(userId)){
-            console.log('not included')
             await axios.post(`http://localhost:8000/likes/`, {
                 "user_id": userId,
                 "post_id": postId
@@ -93,8 +94,6 @@ export const VerifyLike = async (postId, userId) => {
         } else {
             console.log('something went wrong')
         }
-        
-        console.log(userId)
     } catch (error) {
         throw error
     }
