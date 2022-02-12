@@ -5,12 +5,13 @@ import { TextField, Button, Box } from '@mui/material'
 export default function SignIn(props) {
   return (
     <div className='flex-login'>
-      <h6 className='join-title'>Join Parasocialr</h6>
+      <h6 className='join-title'>Welcome to Parasocialr</h6>
       <Box component='form'onSubmit={props.handleLogIn}
         sx={{
           display: 'flex',
           flexDirection: 'row',
-          width: '75%'
+          width: '75%',
+          color: '#CEE5F1',
         }}
       >
         <TextField type='email' name='email' id="outlined-name" label="Email"></TextField>
