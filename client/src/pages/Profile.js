@@ -82,7 +82,7 @@ const Profile = (props) => {
     return (
         <div>
             <h3> Welcome <span>{props.userState.user.first_name}</span> <span>{props.userState.user.username}</span></h3>
-            <div>
+            <div className='buttons'>
                 <button onClick={handleLogOut}>Log out</button>
                 <button onClick={()=> setRender(1)}>Edit Profile</button>
                 <button onClick={() => setRender(3)}>Post</button>

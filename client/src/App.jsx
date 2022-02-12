@@ -47,7 +47,7 @@ const App = (props) => {
   }
 
   return (
-    <div>
+    <div >
       {props.userState.isLoggedIn === true ? 
       <div>
         <div>
@@ -62,7 +62,7 @@ const App = (props) => {
         </div>
       </div>
       :
-      <div>
+      <div className='login-body'>
         <Switch>
           <Route exact path='/'>
             <SignIn handleLogIn={handleLogIn} />

@@ -1,16 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import { TextField, Button, Box } from '@mui/material'
 
 export default function SignIn(props) {
   return (
-    <div>
-      <form onSubmit={props.handleLogIn}>
-        <input type='email' placeholder='email' name='email'></input>
-        <input type='password' placeholder='password' name='password'></input>
-        <input type='submit'></input>
-      </form>
-      <div>
-        Dont have an account? SignUp <Link to='/sign-up'>here</Link>
+    <div className='flex-login'>
+      <h6 className='join-title'>Join Parasocialr</h6>
+      <Box component='form'onSubmit={props.handleLogIn}
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          width: '75%'
+        }}
+      >
+        <TextField type='email' name='email' id="outlined-name" label="Email"></TextField>
+        <TextField type='password' label="Password" name='password' id="outlined-password"></TextField>
+        <Button type='submit' variant="outlined" size="small">Submit</Button>
+      </Box>
+      <div >
+        Dont have an account?<Link to='/sign-up'> SignUp here</Link >
       </div>
     </div>
   )
