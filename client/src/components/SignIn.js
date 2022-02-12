@@ -9,7 +9,7 @@ export default function SignIn(props) {
       <Box component='form'onSubmit={props.handleLogIn}
         sx={{
           display: 'flex',
-          flexDirection: 'row',
+          flexDirection: 'column',
           width: '75%',
           color: '#CEE5F1',
         }}
