@@ -1,67 +1,12 @@
 *{
     font-family: Roboto;
-    padding-top: 10%;
-    padding: 0;
-    margin: 0;
     color: #000000;
 }
-/* .nav{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-} */
-
 .posts {
     display: flex;
     flex-direction: column;
     padding: 2rem 1rem 2rem 1rem;
 }
-
-/* input {
-    width: 75%;
-    text-decoration: none;
-    border-radius: 3px;
-    background-color: #e7e7e7;
-    border: 1px solid #ccc;
-    padding: 5px 8px;
-    margin: 1px;
-} */
-
-
-/* textarea {
-    max-width: 75%;
-    width: 75%;
-    height: 75px;
-    text-decoration: none;
-    border-radius: 3px;
-    background-color: #e7e7e7;
-    border: 1px solid #ccc;
-    padding: 5px 8px;
-    margin: 2px;
-} */
-
-/* img{
-    border-radius: 5px;
-} */
-
-.button {
-    margin: 10px;
-    padding: 2px 5px;
-    text-decoration: none;
-    border: none;
-    background-color: #e7e7e7;
-    border-radius: 3px;
-}
-/* .button:hover {
-    background-color: #CECECE;
-} */
-
-/* .post-card{
-    border: solid 1px black;
-    border-radius: 5px;
-    background-color: gray;
-    padding: 1rem;
-} */
 .login-body{
     height: 100vh;
     display: flex;
@@ -82,14 +27,10 @@
     font-size: 3.5rem;
     color: #141A1D;
 }
-.buttons{
-    padding-top: 30%;
-}
 a:link {
     text-decoration: none;
     color: black;
     background-color: #FDFDF7;
-    font-family: 'Tangerine', cursive;
     font-size: 2rem;
     color: #141A1D;
     font-style: italic;
@@ -99,9 +40,29 @@ a:visited {
     text-decoration: none;
     color: black;
     background-color: #FDFDF7;
-    font-family: 'Tangerine', cursive;
     font-size: 2rem;
     color: #141A1D;
     font-style: italic;
     background-color:#F9FCFE;
+}
+.profile-body{
+    /* height: 100vh; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 80%;
+}
+.landing-profile{
+    margin-top: 20%;
+    /* width: 65%; */
+}
+.buttons{
+    display: flex;
+}
+#root{
+    display: flex;
+    justify-content: center;
+}
+.link-login{
+    font-family: 'Tangerine', cursive;
 }

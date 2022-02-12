@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from "react-redux";
+import { useHistory } from 'react-router-dom';
 
 import { LoadUser, LogOut } from '../store/actions/UserAction';
 import { UpdateUser, DeleteUser, PostPost, DeletePost } from '../services';
-import { useHistory } from 'react-router-dom';
 import User from '../components/User';
 import Post from '../components/Post';
 import NewPost from '../components/NewPost';
 import { UpdateCurrent } from '../store/actions/PostAction';
+
+import { Button, Box } from '@mui/material'
 
 
 const mapStateToProps = (state) => {
@@ -80,13 +82,13 @@ const Profile = (props) => {
     }, [])
 
     return (
-        <div>
+        <div className='profile-body'>
             <h3> Welcome <span>{props.userState.user.first_name}</span> <span>{props.userState.user.username}</span></h3>
-            <div className='buttons'>
-                <button onClick={handleLogOut}>Log out</button>
-                <button onClick={()=> setRender(1)}>Edit Profile</button>
-                <button onClick={() => setRender(3)}>Post</button>
-            </div>
+            <Box>
+                <Button onClick={handleLogOut} color="error">Log out</Button>
+                <Button onClick={()=> setRender(1)}>Edit Profile</Button>
+                <Button onClick={() => setRender(3)}>Post</Button>
+            </Box>
 
             <div>
                 {render === 0 ?

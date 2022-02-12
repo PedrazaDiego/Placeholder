@@ -6,7 +6,7 @@ export default function SignIn(props) {
   return (
     <div className='flex-login'>
       <h6 className='join-title'>Welcome to Parasocialr</h6>
-      <Box component='form'onSubmit={props.handleLogIn}
+      <Box component='form' onSubmit={props.handleLogIn}
         sx={{
           display: 'flex',
           flexDirection: 'column',
@@ -19,7 +19,7 @@ export default function SignIn(props) {
         <Button type='submit' variant="outlined" size="small">Submit</Button>
       </Box>
       <div >
-        Dont have an account?<Link to='/sign-up'> SignUp here</Link >
+        Dont have an account?<Link to='/sign-up' className='link-login'> SignUp here</Link >
       </div>
     </div>
   )

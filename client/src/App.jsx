@@ -47,32 +47,30 @@ const App = (props) => {
   }
 
   return (
-    <div >
-      {props.userState.isLoggedIn === true ? 
-      <div>
+    <div>
+      {props.userState.isLoggedIn === true ?
         <div>
-          <NavBar userState={props.userState}/>
+          <NavBar userState={props.userState} />
+          <div className='landing-profile'>
+            <Switch>
+              <Route exact path='/' component={Landing} />
+              <Route path='/profile' component={Profile} />
+              <Route />
+            </Switch>
+          </div>
         </div>
-        <div>
+        :
+        <div className='login-body'>
           <Switch>
-            <Route exact path='/' component={Landing} />
-            <Route path='/profile' component={Profile} />
-            <Route />
+            <Route exact path='/'>
+              <SignIn handleLogIn={handleLogIn} />
+            </Route>
+            <Route path='/sign-up'>
+              <Register handleRegister={handleRegister} />
+            </Route>
           </Switch>
         </div>
-      </div>
-      :
-      <div className='login-body'>
-        <Switch>
-          <Route exact path='/'>
-            <SignIn handleLogIn={handleLogIn} />
-          </Route>
-          <Route path='/sign-up'>
-            <Register handleRegister={handleRegister}/>
-          </Route>
-        </Switch>
-      </div>
-    }
+      }
     </div>
   );
 }
