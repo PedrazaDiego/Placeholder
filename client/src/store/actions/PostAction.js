@@ -5,7 +5,6 @@ export const LoadPosts = (n) => {
     return async (dispatch) => {
         try {
             const posts = await GetPosts(n)
-            console.log(posts)
             dispatch({
                 type: GET_POST,
                 payload: posts.results

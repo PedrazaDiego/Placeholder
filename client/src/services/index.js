@@ -1,8 +1,10 @@
 import axios from 'axios'
 
+const BASE_URL = process.env.REACT_APP_BASE_URL ? process.env.REACT_APP_BASE_URL : 'https://parasocialess.herokuapp.com'
+
 export const GetPosts = async (n) => {
     try {
-        const response = await axios.get(`http://localhost:8000/posts/?page=${n}`)
+        const response = await axios.get(`${BASE_URL}/posts/?page=${n}`)
         return response.data
     } catch (error) {
         throw error
@@ -11,7 +13,7 @@ export const GetPosts = async (n) => {
 
 export const PostPost = async (post) => {
     try {
-        await axios.post(`http://localhost:8000/posts/`, post)
+        await axios.post(`${BASE_URL}/posts/`, post)
 
     } catch (error) {
         throw error
@@ -20,7 +22,7 @@ export const PostPost = async (post) => {
 
 export const DeletePost = async (id) => {
     try {
-        await axios.delete(`http://localhost:8000/posts/${id}`)
+        await axios.delete(`${BASE_URL}/posts/${id}`)
     } catch (error) {
         throw error
     }
@@ -28,7 +30,7 @@ export const DeletePost = async (id) => {
 
 export const GetUser = async (id) => {
     try {
-        const response = await axios.get(`http://localhost:8000/users/${id}`)
+        const response = await axios.get(`${BASE_URL}/users/${id}`)
         return response.data
     } catch (error) {
         throw error
@@ -37,7 +39,7 @@ export const GetUser = async (id) => {
 
 export const GetToken = async (user) => {
     try {
-        const response = await axios.post('http://localhost:8000/api/token/', user)
+        const response = await axios.post(`${BASE_URL}/api/token/`, user)
         return response
     } catch (error) {
         throw error
@@ -46,7 +48,7 @@ export const GetToken = async (user) => {
 
 export const RegisterUser = async (user) => {
     try {
-        await axios.post('http://localhost:8000/api/register/', user)
+        await axios.post(`${BASE_URL}/api/register/`, user)
     } catch (error) {
         throw error
     }
@@ -54,7 +56,7 @@ export const RegisterUser = async (user) => {
 
 export const UpdateUser = async (user, id) => {
     try {
-        await axios.put(`http://localhost:8000/users/${id}`, user)
+        await axios.put(`${BASE_URL}/users/${id}`, user)
     } catch (error) {
         throw error
     }
@@ -62,7 +64,7 @@ export const UpdateUser = async (user, id) => {
 
 export const DeleteUser = async (id) => {
     try {
-        await axios.delete(`http://localhost:8000/users/${id}`)
+        await axios.delete(`${BASE_URL}/users/${id}`)
     } catch (error) {
         throw error
     }
@@ -70,7 +72,7 @@ export const DeleteUser = async (id) => {
 
 export const VerifyLike = async (postId, userId) => {
     try {
-        const response = await axios.get(`http://localhost:8000/posts/${postId}`)
+        const response = await axios.get(`${BASE_URL}/posts/${postId}`)
         let resArray = []
         let obj = {}
         for(let i = 0; i < response.data.likes.length; i++){
@@ -80,10 +82,10 @@ export const VerifyLike = async (postId, userId) => {
         }
         if(resArray.includes(userId)){
             if(obj.user_id === userId){
-                await axios.delete(`http://localhost:8000/likes/${obj.id}`)
+                await axios.delete(`${BASE_URL}/likes/${obj.id}`)
             }
         } else if (!resArray.includes(userId)){
-            await axios.post(`http://localhost:8000/likes/`, {
+            await axios.post(`${BASE_URL}/likes/`, {
                 "user_id": userId,
                 "post_id": postId
             })
