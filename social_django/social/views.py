@@ -24,7 +24,7 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class PostList(generics.ListCreateAPIView):
-    queryset = list(reversed(Post.objects.all()))
+    queryset = Post.objects.all()
     serializer_class = PostSerializer
 
         
