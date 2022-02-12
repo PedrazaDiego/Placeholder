@@ -18,7 +18,7 @@ export default function SignIn(props) {
         <TextField type='password' label="Password" name='password' id="outlined-password"></TextField>
         <Button type='submit' variant="outlined" size="small">Submit</Button>
       </Box>
-      <div >
+      <div className='bottom-text'>
         Dont have an account?<Link to='/sign-up' className='link-login'> SignUp here</Link >
       </div>
     </div>

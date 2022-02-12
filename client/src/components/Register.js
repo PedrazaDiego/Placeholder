@@ -18,7 +18,7 @@ export default function Register(props) {
         <TextField type='password' label="Password" name='password' id="outlined-password"></TextField>
         <Button type='submit' variant="outlined" size="small">Submit</Button>
       </Box>
-      <div>
+      <div className='bottom-text'>
         Already have an account?<Link to='/' className='link-login'> SignIn here</Link>
       </div>
     </div>
