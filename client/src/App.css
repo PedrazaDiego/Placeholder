@@ -69,3 +69,18 @@ a:visited {
 .bottom-text{
     padding-top: 6rem;
 }
+.delete-form{
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+.delete-space{
+    padding: 2rem;
+}
+svg{
+    margin-top: 5px;
+}
+.nav{
+    display: column;
+    flex-direction: row;
+    justify-content: space-between;
+}

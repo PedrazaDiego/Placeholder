@@ -112,12 +112,15 @@ const Profile = (props) => {
                 null}
             </div>
 
-            <div>
+            <div className='post-form'>
                 {render === 2 ? 
-                <div>
+                <Box sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                  }} className='delete-space'>
                     Are you sure you want to delete your account. This cannot be undone! <br/>
-                    <button onClick={handleDelete}>Yes I want to delete it</button> <button onClick={() => setRender(1)}>Nope! take me back!</button>
-                </div>
+                    <Button className='delete-space' onClick={handleDelete} color="error" variant="outlined">Yes I want to delete it</Button> <Button className='delete-space' variant="outlined" onClick={() => setRender(1)}>Nope! take me back!</Button>
+                </Box>
                 : null}
             </div>
             

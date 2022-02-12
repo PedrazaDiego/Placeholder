@@ -8,8 +8,6 @@ export default function NewPost(props) {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          // alignItems: 'center',
-          color: '#CEE5F1',
         }}>
             <TextField multiline type='text' placeholder='what are you thinking' name='content'></TextField>
             <TextField type='text' placeholder='image url' name='image'></TextField>
