@@ -12,7 +12,7 @@ export default function Post(props) {
       <img src={props.e.image} />
       {props.postState.current === 1 ?
         <div>
-          <button>heart</button> {props.e.likes.length} likes
+          <button>heart</button> {props.e.likes.length} likes ~~
         </div>
         : null}
 
