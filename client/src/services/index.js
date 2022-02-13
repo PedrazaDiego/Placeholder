@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const BASE_URL = process.env.REACT_APP_BASE_URL ? process.env.REACT_APP_BASE_URL : 'https://parasocialess.herokuapp.com'
+const BASE_URL = process.env.NODE_ENV === 'production' ?  'https://parasocialess.herokuapp.com' : process.env.REACT_APP_BASE_URL
 
 export const GetPosts = async (n) => {
     try {
