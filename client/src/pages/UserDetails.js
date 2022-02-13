@@ -5,8 +5,11 @@ import { useParams } from 'react-router-dom';
 import { LoadUser } from '../store/actions/UserAction';
 import { ToggleState } from '../store/actions/PostAction';
 
-import { Card, ImageList, ImageListItem, Button } from '@mui/material'
 import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone'
+import Card from '@mui/material/Card';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import Button from '@mui/material/Button';
 
 
 const mapStateToProps = (state) => {
@@ -56,7 +59,7 @@ const Profile = (props) => {
                                 </FavoriteTwoToneIcon>
                                 {e.likes.length}  likes
                             </Button>
-                            
+
                         </ImageListItem>
                     ))}
                 </ImageList>

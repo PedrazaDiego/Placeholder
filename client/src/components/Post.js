@@ -2,7 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import DeleteIcon from '@mui/icons-material/Delete'
 import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone'
-import { Button, Card } from '@mui/material'
+import Button from '@mui/material/Button'
+import Card from '@mui/material/Card'
 
 
 export default function Post(props) {

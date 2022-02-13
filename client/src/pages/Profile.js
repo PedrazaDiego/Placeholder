@@ -9,7 +9,9 @@ import Post from '../components/Post';
 import NewPost from '../components/NewPost';
 import { UpdateCurrent } from '../store/actions/PostAction';
 
-import { Button, Box, Card, ImageList, ImageListItem } from '@mui/material'
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import Box from '@mui/material/Box';
 
 
 const mapStateToProps = (state) => {
