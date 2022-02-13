@@ -4,7 +4,7 @@ import { TextField, Button, Box } from '@mui/material'
 export default function NewPost(props) {
   return (
     <div className='post-form'>
-        <Box component='form' onSubmit={props.handleLogIn}
+        <Box component='form' onSubmit={props.handlePost}
         sx={{
           display: 'flex',
           flexDirection: 'column',

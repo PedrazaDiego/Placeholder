@@ -1,6 +1,7 @@
 *{
     font-family: Roboto;
-    color: #000000;
+    color: black;
+    /* background-color: #273339; */
 }
 .posts {
     display: flex;
@@ -51,10 +52,12 @@ a:visited {
     flex-direction: column;
     justify-content: center;
     height: 80%;
+    /* background-color: #273339; */
 }
 .landing-profile{
     margin-top: 20%;
     /* width: 65%; */
+    /* background-color: #273339; */
 }
 .buttons{
     display: flex;
@@ -80,7 +83,29 @@ svg{
     margin-top: 5px;
 }
 .nav{
-    display: column;
+    display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
+}
+.background{
+    /* background-color: #273339; */
+    height: 100vh;
+}
+.welcome-back{
+    font-family: 'Tangerine', cursive;
+    font-size: 2rem;
+}
+.posts {
+    display: flex;
+    flex-direction: column;
+    padding: 15% 1rem 15% 1rem;
+}
+.post-card{
+    /* border: solid 1px black; */
+    border-radius: 5px;
+    /* background-color: gray; */
+    padding: 1rem;
+}
+img{
+    border-radius: 5px;
 }

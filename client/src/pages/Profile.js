@@ -9,7 +9,7 @@ import Post from '../components/Post';
 import NewPost from '../components/NewPost';
 import { UpdateCurrent } from '../store/actions/PostAction';
 
-import { Button, Box } from '@mui/material'
+import { Button, Box, Card } from '@mui/material'
 
 
 const mapStateToProps = (state) => {
@@ -39,6 +39,8 @@ const Profile = (props) => {
         history.push('/')
     }
     const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log('clicked')
         UpdateUser({
             'first_name': e.target.first_name.value,
             'user_name': e.target.username.value,
@@ -83,11 +85,11 @@ const Profile = (props) => {
 
     return (
         <div className='profile-body'>
-            <h3> Welcome <span>{props.userState.user.first_name}</span> <span>{props.userState.user.username}</span></h3>
+            <h3> <span className='welcome-back'> Welcome Back  </span><br/> <span className='username'>{props.userState.user.username}</span><span className='name'>_{props.userState.user.first_name}</span></h3>
             <Box>
-                <Button onClick={handleLogOut} color="error">Log out</Button>
-                <Button onClick={()=> setRender(1)}>Edit Profile</Button>
-                <Button onClick={() => setRender(3)}>Post</Button>
+                <Button onClick={handleLogOut} color="error" style={{backgroundColor:'#273339', color:'white'}}>Log out</Button>
+                <Button onClick={()=> setRender(1)} style={{backgroundColor:'#273339', color:'white'}}>Edit Profile</Button>
+                <Button onClick={() => setRender(3)} style={{backgroundColor:'#273339', color:'white'}}>Post</Button>
             </Box>
 
             <div>

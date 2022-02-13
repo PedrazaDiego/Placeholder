@@ -17,10 +17,8 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class PostSerializer(serializers.HyperlinkedModelSerializer):
-    user = serializers.HyperlinkedRelatedField(
-        view_name='user_detail',
-        read_only=True
-    )
+    user = serializers.StringRelatedField()
+    
     likes = serializers.HyperlinkedRelatedField(
         view_name='like_detail',
         many=True,

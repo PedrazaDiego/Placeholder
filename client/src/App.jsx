@@ -47,9 +47,9 @@ const App = (props) => {
   }
 
   return (
-    <div>
+    <div className='background'>
       {props.userState.isLoggedIn === true ?
-        <div>
+        <div className='background'>
           <NavBar userState={props.userState} />
           <div className='landing-profile'>
             <Switch>

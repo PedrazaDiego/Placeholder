@@ -195,6 +195,15 @@ CORS_ALLOWED_ORIGINS = [
     'https://parasocialr.herokuapp.com',
 ]
 
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
+
 # CORS_ALLOW_ALL_ORIGINS = True
 
 STATIC_ROOT=os.path.join(BASE_DIR, "static/")
