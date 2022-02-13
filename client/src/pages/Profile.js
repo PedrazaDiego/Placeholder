@@ -39,7 +39,6 @@ const Profile = (props) => {
         history.push('/')
     }
     const handleSubmit = (e) => {
-        e.preventDefault()
         console.log('clicked')
         UpdateUser({
             'first_name': e.target.first_name.value,

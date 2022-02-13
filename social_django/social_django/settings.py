@@ -47,6 +47,15 @@ INSTALLED_APPS = [
     "corsheaders",  
 ]
 
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
+
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
@@ -195,14 +204,7 @@ CORS_ALLOWED_ORIGINS = [
     'https://parasocialr.herokuapp.com',
 ]
 
-CORS_ALLOW_METHODS = [
-    "DELETE",
-    "GET",
-    "OPTIONS",
-    "PATCH",
-    "POST",
-    "PUT",
-]
+
 
 # CORS_ALLOW_ALL_ORIGINS = True
 

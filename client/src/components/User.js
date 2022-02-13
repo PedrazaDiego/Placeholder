@@ -15,14 +15,14 @@ export default function User(props) {
                 <br />
 
                 <label> Username</label> <br />
-                <TextField error helperText="Required" type='text' label={`${props.userState.user.username}`} name='username'></TextField><br />
+                <TextField error helperText="Required" type='text' label={`${props.userState.user.username}`} name='username' required></TextField><br />
 
                 <label>Email</label> <br />
-                <TextField error helperText="Required" type='email' label={`${props.userState.user.email}`} name='email'></TextField><br />
+                <TextField error helperText="Required" type='email' label={`${props.userState.user.email}`} name='email' required></TextField><br />
 
                 <label>Password</label>
                 <br />
-                <TextField error helperText="Required" type='password' name='password'></TextField> <br />
+                <TextField error helperText="Required" type='password' name='password' required></TextField> <br />
 
                 <label> About </label>
                 <br />
