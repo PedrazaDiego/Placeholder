@@ -13,6 +13,7 @@ import Landing from './pages/Landing'
 import Profile from './pages/Profile'
 import SignIn from './components/SignIn';
 import Register from './components/Register';
+import UserDetails from './pages/UserDetails';
 
 
 const mapStateToProps = (state) => {
@@ -54,6 +55,7 @@ const App = (props) => {
           <div className='landing-profile'>
             <Switch>
               <Route exact path='/' component={Landing} />
+              <Route path='/user/:id' component={UserDetails}/>
               <Route path='/profile' component={Profile} />
               <Route />
             </Switch>

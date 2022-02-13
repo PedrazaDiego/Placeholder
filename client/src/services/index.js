@@ -56,8 +56,7 @@ export const RegisterUser = async (user) => {
 
 export const UpdateUser = async (user, id) => {
     try {
-        const response = await axios.put(`${BASE_URL}/users/${id}`, user)
-        console.log(response)
+        await axios.put(`${BASE_URL}/users/${id}`, user)
     } catch (error) {
         throw error
     }

@@ -6,7 +6,7 @@ export default function Register(props) {
   return (
     <div className='flex-login'>
       <h6 className='join-title'>Join Parasocialr</h6>
-      <Box component='form' onSubmit={props.handleLogIn}
+      <Box component='form' onSubmit={props.handleRegister}
         sx={{
           display: 'flex',
           flexDirection: 'column',

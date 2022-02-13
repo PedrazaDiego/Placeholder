@@ -48,14 +48,8 @@ const Landing = (props) => {
 
     return (
         <div>
-            {/* {props.postState.isLoading ? null : <div> {props.postState.posts.map((e) => (
-                <div key={e.id} className='posts'>
-                    <Post e={e} userState={props.userState} postState={props.postState} handleLike={handleLike} />
-                </div>
-            ))} </div>} */}
-
     <InfiniteScroll
-        dataLength={props.postState.posts.length} //This is important field to render the next data
+        dataLength={props.postState.posts.length}
         next={fetchData}
         hasMore={hasMore}
         loader={<h4>Loading...</h4>}
@@ -64,7 +58,6 @@ const Landing = (props) => {
                 <b>Yay! You have seen it all</b>
             </p> 
         }
-        // below props only if you need pull down functionality
         refreshFunction={() => window.location.reload()}
         pullDownToRefresh
         pullDownToRefreshThreshold={50}
