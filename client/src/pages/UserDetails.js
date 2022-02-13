@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from "react-redux";
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { LoadUser } from '../store/actions/UserAction';
 import { ToggleState } from '../store/actions/PostAction';
@@ -26,9 +26,6 @@ const mapDispatchToProps = (dispatch) => {
 
 const Profile = (props) => {
 
-    const [render, setRender] = useState(0)
-
-    const history = useHistory()
     const id = useParams()
 
     const handleLike = (postId, userId) => {
@@ -51,7 +48,7 @@ const Profile = (props) => {
                     {props.userState.isLoading ? id.id : props.userState.user.posts.map((e) => (
                         <ImageListItem key={e.id}>
                             <img
-                                src={`${e.image}`}
+                                src={`${e.image}`} alt='post'
                             />
                             <Button className='post-bottom'>
                                 <FavoriteTwoToneIcon

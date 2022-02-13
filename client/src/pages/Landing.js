@@ -48,32 +48,32 @@ const Landing = (props) => {
 
     return (
         <div>
-    <InfiniteScroll
-        dataLength={props.postState.posts.length}
-        next={fetchData}
-        hasMore={hasMore}
-        loader={<h4>Loading...</h4>}
-        endMessage={
-            <p style={{ textAlign: 'center' }}>
-                <b>Yay! You have seen it all</b>
-            </p> 
-        }
-        refreshFunction={() => window.location.reload()}
-        pullDownToRefresh
-        pullDownToRefreshThreshold={50}
-        pullDownToRefreshContent={
-            <h3 style={{ textAlign: 'center' }}>&#8595; Pull down to refresh</h3>
-        }
-        releaseToRefreshContent={
-            <h3 style={{ textAlign: 'center' }}>&#8593; Release to refresh</h3>
-        }
-    >
-        {props.postState.isLoading ? null : <div> {props.postState.posts.map((e, e2) => (
-                <div key={e2} className='posts'>
-                    <Post e={e} userState={props.userState} postState={props.postState} handleLike={handleLike} />
-                </div>
-            ))} </div>}
-    </InfiniteScroll>
+            <InfiniteScroll
+                dataLength={props.postState.posts.length}
+                next={fetchData}
+                hasMore={hasMore}
+                loader={<h4>Loading...</h4>}
+                endMessage={
+                    <p style={{ textAlign: 'center' }}>
+                        <b>Yay! You have seen it all</b>
+                    </p> 
+                }
+                refreshFunction={() => window.location.reload()}
+                pullDownToRefresh
+                pullDownToRefreshThreshold={50}
+                pullDownToRefreshContent={
+                    <h3 style={{ textAlign: 'center' }}>&#8595; Pull down to refresh</h3>
+                }
+                releaseToRefreshContent={
+                    <h3 style={{ textAlign: 'center' }}>&#8593; Release to refresh</h3>
+                }
+            >
+                {props.postState.isLoading ? null : <div> {props.postState.posts.map((e, e2) => (
+                        <div key={e2} className='posts'>
+                            <Post e={e} userState={props.userState} postState={props.postState} handleLike={handleLike} />
+                        </div>
+                    ))} </div>}
+            </InfiniteScroll>
         </div>
     )
 }
