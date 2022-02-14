@@ -1,6 +1,7 @@
-const {GET_POST, IS_LOADING, CURRENT, COUNT} = require('../types')
+const {GET_POST, IS_LOADING, CURRENT, COUNT, LIKE} = require('../types')
 
 const iState = {
+    like: null,
     count: null,
     isLoading: true,
     current: null,
@@ -17,6 +18,8 @@ const PostReducer = (state = iState, action) => {
             return { ...state, posts: [...state.posts, ...action.payload]}
         case COUNT:
             return { ...state, count: action.payload}
+        case LIKE:
+            return { ...state, like: action.payload}
         default:
             return { ...state}
     }

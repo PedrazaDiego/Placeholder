@@ -20,7 +20,7 @@ export default function Post(props) {
       {props.postState.current === 0 ?
         <Link to={`/user/${props.e.user_id}`} className='user-link'> {props.e.user} </Link>
         : null}
-      <img src={props.e.image} onClick={() => console.log(props.e.content)}/>
+      <img src={props.e.image} alt={`${props.e.image}`} onClick={() => console.log(props.e.content)}/>
 
 
       {props.postState.current === 1 ?
@@ -38,7 +38,7 @@ export default function Post(props) {
               onClick={() => props.handleLike(props.e.id, props.userState.user_id)}>
             </FavoriteTwoToneIcon>
           </Button>
-          {props.e.likes.length}  likes
+            {props.e.likes.length}  likes
         </div>
         :
         null}

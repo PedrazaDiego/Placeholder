@@ -82,7 +82,7 @@ export const VerifyLike = async (postId, userId) => {
         }
         if(resArray.includes(userId)){
             if(obj.user_id === userId){
-                await axios.delete(`https://parasocialess.herokuapp.com/likes/${obj.id}`)
+            await axios.delete(`https://parasocialess.herokuapp.com/likes/${obj.id}`)
             }
         } else if (!resArray.includes(userId)){
             await axios.post(`https://parasocialess.herokuapp.com/likes/`, {

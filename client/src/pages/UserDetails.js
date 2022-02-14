@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from "react-redux";
 import { useParams } from 'react-router-dom';
 
-import { LoadUser, Loading } from '../store/actions/UserAction';
+import { LoadUser } from '../store/actions/UserAction';
 import { ToggleState } from '../store/actions/PostAction';
 
 import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone'
@@ -21,7 +21,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchUser: (id) => dispatch(Loading(id)),
+        fetchUser: (id) => dispatch(LoadUser(id)),
         toggleState: (postId, userId) => dispatch(ToggleState(postId, userId)),
     }
 }
@@ -30,8 +30,6 @@ const mapDispatchToProps = (dispatch) => {
 const Profile = (props) => {
 
     const id = useParams()
-
-    const [render, setRender] = useState(false)
 
     const handleLike = (postId, userId) => {
         props.toggleState(postId, userId)
