@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from "react-redux";
 import { useParams } from 'react-router-dom';
 
@@ -31,6 +31,8 @@ const Profile = (props) => {
 
     const id = useParams()
 
+    const [render, setRender] = useState(false)
+
     const handleLike = (postId, userId) => {
         props.toggleState(postId, userId)
     }
@@ -48,7 +50,7 @@ const Profile = (props) => {
             <br />
             <Card raised={true}>
                 <ImageList>
-                    {props.userState.isLoading ? props.userState.user.posts.map((e) => (
+                    {props.userState.isLoading ? <p>Loading ... </p> : props.userState.user.posts.map((e) => (
                         <ImageListItem key={e.id}>
                             <img
                                 src={`${e.image}`} alt='post'
@@ -60,7 +62,7 @@ const Profile = (props) => {
                                 {e.likes.length}  likes
                             </Button>
                         </ImageListItem>
-                    )) : <p>Loading ... </p> }
+                    ))}
                 </ImageList>
             </Card>
 

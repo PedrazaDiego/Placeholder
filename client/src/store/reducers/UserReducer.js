@@ -8,7 +8,7 @@ const iState = {
     isLoggedIn: false,
     userToken: {},
     user_id: null,
-    user: false
+    user: {}
 }
 
 if (localStorage.getItem('userToken')) {

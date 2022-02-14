@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 import { LoadPosts, ToggleState, UpdateCurrent } from "../store/actions/PostAction";
+import { LoadUser } from '../store/actions/UserAction';
 import Post from '../components/Post'
 
 
@@ -10,7 +11,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchPosts: (n) => dispatch(LoadPosts(n)),
         updateCurrent: (n) => dispatch(UpdateCurrent(n)),
-        toggleState: (postId, userId) => dispatch(ToggleState(postId, userId))
+        toggleState: (postId, userId) => dispatch(ToggleState(postId, userId)),
+        fetchUser: (id) => dispatch(LoadUser(id)),
     }
 }
 
@@ -43,6 +45,7 @@ const Landing = (props) => {
     useEffect(() => {
         props.fetchPosts(1)
         props.updateCurrent(0)
+        props.fetchUser(props.userState.user_id)
     }, [])
     
 

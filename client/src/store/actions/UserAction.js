@@ -87,7 +87,7 @@ export const Loading = (id) => {
             })
             dispatch({
                 type: IS_LOADING,
-                payload: true
+                payload: false  
             })
 
         } catch (error) {
