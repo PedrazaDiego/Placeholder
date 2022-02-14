@@ -26,7 +26,8 @@ export const LoadPosts = (n) => {
 export const ToggleState = (postId, userId) => {
     return async () => {
         try {
-            await VerifyLike(postId, userId)
+            const response = await VerifyLike(postId, userId)
+            // console.log(response)
         } catch (error) {
             throw error
         }

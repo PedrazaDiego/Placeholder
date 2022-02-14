@@ -14,7 +14,17 @@ export const GetPosts = async (n) => {
 export const PostPost = async (post) => {
     try {
         await axios.post(`https://parasocialess.herokuapp.com/posts/`, post)
+    } catch (error) {
+        throw error
+    }
+}
 
+export const PostLikes = async (id) => {
+    try {
+        const response = axios.get(`https://parasocialess.herokuapp.com/posts/${id}`)
+        const {data} = await response
+        // console.log(data)
+        return data
     } catch (error) {
         throw error
     }
@@ -82,13 +92,15 @@ export const VerifyLike = async (postId, userId) => {
         }
         if(resArray.includes(userId)){
             if(obj.user_id === userId){
-            await axios.delete(`https://parasocialess.herokuapp.com/likes/${obj.id}`)
+            const disliked = await axios.delete(`https://parasocialess.herokuapp.com/likes/${obj.id}`)
+            return disliked
             }
         } else if (!resArray.includes(userId)){
-            await axios.post(`https://parasocialess.herokuapp.com/likes/`, {
+            const liked = await axios.post(`https://parasocialess.herokuapp.com/likes/`, {
                 "user_id": userId,
                 "post_id": postId
             })
+            return liked
         } else {
             console.log('something went wrong')
         }

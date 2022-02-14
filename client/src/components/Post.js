@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import DeleteIcon from '@mui/icons-material/Delete'
 import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone'
 import Button from '@mui/material/Button'
 import Card from '@mui/material/Card'
 
+import { PostLikes } from '../services'
+
 
 export default function Post(props) {
+
+  const [likeCount, setLikeCount] = useState(props.e.likes.length)
 
   return (
     <Card className='posts post-card' raised={true} sx={(theme) =>({
@@ -35,10 +39,17 @@ export default function Post(props) {
         <div className='post-bottom'>
           <Button>
             <FavoriteTwoToneIcon
-              onClick={() => props.handleLike(props.e.id, props.userState.user_id)}>
+              onClick={ async () => {
+                props.handleLike(props.e.id, props.userState.user_id)
+                const res = PostLikes(props.e.id)
+                const {likes} = await res
+                setLikeCount(likes.length)
+                console.log(likeCount)
+                }}>
             </FavoriteTwoToneIcon>
           </Button>
-            {props.e.likes.length}  likes
+            {likeCount}
+            {/* {props.e.likes.length}   */}
         </div>
         :
         null}
