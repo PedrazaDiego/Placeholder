@@ -64,6 +64,37 @@ export const LoadUser = (id) => {
     }
 }
 
+export const Loading = (id) => {
+    return async (dispatch) => {
+        try {
+            const user = await GetUser(id)
+            let posts = []
+            for (let i = 0; i < user.posts.length; i++) {
+                let res = await axios.get(`${user.posts[i]}`)
+                posts.push(res.data)
+            }
+            let filteredUser = {
+                email: user.email,
+                username: user.user_name,
+                first_name: user.first_name,
+                about: user.about,
+                start_date: user.start_date,
+                posts: posts.reverse()
+            }
+            dispatch({
+                type: GET_USER,
+                payload: filteredUser
+            })
+            dispatch({
+                type: IS_LOADING,
+                payload: true
+            })
+
+        } catch (error) {
+            throw error
+        }
+    }
+}
 export const LogOut = () => {
     return (dispatch) => {
         localStorage.removeItem('userToken')

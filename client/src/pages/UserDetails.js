@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from "react-redux";
 import { useParams } from 'react-router-dom';
 
-import { LoadUser } from '../store/actions/UserAction';
+import { LoadUser, Loading } from '../store/actions/UserAction';
 import { ToggleState } from '../store/actions/PostAction';
 
 import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone'
@@ -21,8 +21,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchUser: (id) => dispatch(LoadUser(id)),
-        toggleState: (postId, userId) => dispatch(ToggleState(postId, userId))
+        fetchUser: (id) => dispatch(Loading(id)),
+        toggleState: (postId, userId) => dispatch(ToggleState(postId, userId)),
     }
 }
 
@@ -48,7 +48,7 @@ const Profile = (props) => {
             <br />
             <Card raised={true}>
                 <ImageList>
-                    {props.userState.isLoading ? id.id : props.userState.user.posts.map((e) => (
+                    {props.userState.isLoading ? props.userState.user.posts.map((e) => (
                         <ImageListItem key={e.id}>
                             <img
                                 src={`${e.image}`} alt='post'
@@ -59,9 +59,8 @@ const Profile = (props) => {
                                 </FavoriteTwoToneIcon>
                                 {e.likes.length}  likes
                             </Button>
-
                         </ImageListItem>
-                    ))}
+                    )) : <p>Loading ... </p> }
                 </ImageList>
             </Card>
 

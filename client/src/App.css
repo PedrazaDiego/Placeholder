@@ -120,3 +120,8 @@ img{
     padding-left: 1rem;
     padding-bottom: 1rem;
 }
+.user-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}

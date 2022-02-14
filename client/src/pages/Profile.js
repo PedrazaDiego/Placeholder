@@ -88,8 +88,8 @@ const Profile = (props) => {
         <div className='profile-body'>
             <Card className='posts post-card' raised={true}>
                 <h3> <span className='welcome-back'> Welcome Back  </span><br /> <span className='username'>{props.userState.user.username}</span><span className='name'>_{props.userState.user.first_name}</span></h3>
-                <Box>
-                    <Button onClick={handleLogOut} color="error" style={{ backgroundColor: '#273339', color: 'white' }}>Log out</Button>
+                <Box className='user-button'>
+                    <Button onClick={handleLogOut} color="error" style={{ backgroundColor: '#FF6961', color: 'white' }}>Log out</Button>
                     <Button onClick={() => setRender(1)} style={{ backgroundColor: '#273339', color: 'white' }}>Edit Profile</Button>
                     <Button onClick={() => setRender(3)} style={{ backgroundColor: '#273339', color: 'white' }}>Post</Button>
                 </Box>
