@@ -37,18 +37,21 @@ export default function Post(props) {
 
       {props.postState.current === 0 ?
         <div className='post-bottom'>
-          <Button>
+          <Button sx={{
+            paddingX: 0
+          }}>
             <FavoriteTwoToneIcon
               onClick={ async () => {
                 props.handleLike(props.e.id, props.userState.user_id)
                 const res = PostLikes(props.e.id)
                 const {likes} = await res
+                // setLikeCount(props.e.likes.length)
                 setLikeCount(likes.length)
                 console.log(likeCount)
                 }}>
             </FavoriteTwoToneIcon>
-          </Button>
-            {likeCount}
+            {likeCount} likes
+          </Button>         
             {/* {props.e.likes.length}   */}
         </div>
         :

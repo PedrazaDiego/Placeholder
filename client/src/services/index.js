@@ -40,8 +40,12 @@ export const DeletePost = async (id) => {
 
 export const GetUser = async (id) => {
     try {
-        const response = await axios.get(`https://parasocialess.herokuapp.com/users/${id}`)
-        return response.data
+        if(!id){
+
+        } else {
+            const response = await axios.get(`https://parasocialess.herokuapp.com/users/${id}`)
+            return response.data
+        }
     } catch (error) {
         throw error
     }
@@ -83,6 +87,7 @@ export const DeleteUser = async (id) => {
 export const VerifyLike = async (postId, userId) => {
     try {
         const response = await axios.get(`https://parasocialess.herokuapp.com/posts/${postId}`)
+        // console.log(response)
         let resArray = []
         let obj = {}
         for(let i = 0; i < response.data.likes.length; i++){
@@ -93,14 +98,16 @@ export const VerifyLike = async (postId, userId) => {
         if(resArray.includes(userId)){
             if(obj.user_id === userId){
             const disliked = await axios.delete(`https://parasocialess.herokuapp.com/likes/${obj.id}`)
-            return disliked
+            console.log('deleted')
+            // return disliked
             }
         } else if (!resArray.includes(userId)){
             const liked = await axios.post(`https://parasocialess.herokuapp.com/likes/`, {
                 "user_id": userId,
                 "post_id": postId
             })
-            return liked
+            console.log('liked')
+            // return liked
         } else {
             console.log('something went wrong')
         }

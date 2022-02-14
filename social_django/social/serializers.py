@@ -19,11 +19,12 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class PostSerializer(serializers.HyperlinkedModelSerializer):
     user = serializers.StringRelatedField()
     
-    likes = serializers.HyperlinkedRelatedField(
+    likes = serializers.StringRelatedField()(
         view_name='like_detail',
         many=True,
         read_only=True
     )
+    
     user_id = serializers.PrimaryKeyRelatedField(
         queryset=NewUser.objects.all(),
         source='user'
