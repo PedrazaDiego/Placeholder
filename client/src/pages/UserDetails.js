@@ -42,7 +42,7 @@ const Profile = (props) => {
     return (
         <div className='posts post-card'>
             <Card className='posts post-card' raised={true}>
-                <h3> <span className='welcome-back'> </span><br /> <span className='username'>{props.userState.user.username}</span><span className='name'>_{props.userState.user.first_name}</span></h3>
+                <p> <span className='welcome-back'> </span><br /> <span className='username'>{props.userState.user.username}</span><span className='name'>_{props.userState.user.first_name}</span></p>
                 {props.userState.user.about ? <p>Bio: {props.userState.user.about}</p> : null}
             </Card>
             <br />
