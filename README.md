@@ -1,4 +1,4 @@
-# Parasocialr
+# [Parasocialr](https://parasocialr.surge.sh/)
 
 ## About
 
