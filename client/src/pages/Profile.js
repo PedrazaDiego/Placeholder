@@ -69,8 +69,11 @@ const Profile = (props) => {
     }
 
     const handlePost = (e) => {
+        e.preventDefault()
         PostPost({
-            'user_id': props.userState.user_id, 'content': e.target.content.value, 'image': e.target.image.value
+            'user_id': props.userState.user_id, 
+            'content': e.target.content.value, 
+            'image': e.target.image.value
         })
     }
 
