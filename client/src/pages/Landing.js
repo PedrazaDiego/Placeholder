@@ -53,9 +53,9 @@ const Landing = (props) => {
         <div>
             <InfiniteScroll
                 dataLength={props.postState.posts.length}
-                next={fetchData}
-                hasMore={hasMore}
-                loader={<h4>Loading...</h4>}
+                // next={fetchData} This function was throwing out an error for infinite scroll
+                // hasMore={hasMore}
+                // loader={<h4>Loading...</h4>} This
                 endMessage={
                     <p style={{ textAlign: 'center' }}>
                         <b>Yay! You have seen it all</b>
